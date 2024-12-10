@@ -78,13 +78,14 @@
     </style>
 </head>
 <body style="overflow-x: hidden">
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg pl-2">
+            <img src="{{ asset('LogoPolindra.png') }}" alt="Logo" width="50">
         <div class="container-fluid">
             <a class="navbar-brand" href="innovana">INNOVANA</a>
         </div>
     </nav>
 
-    <div class="content-wrapper" style="overflow-x: hidden">
+    <div class="content-wrapper" style="overflow-x: hidden ">
         <div class="sidebar">
             <img src="{{ asset('LogoOrang.jpg') }}" alt="Profile Image">
             <h4>{{ Auth::user()->role }}</h4>

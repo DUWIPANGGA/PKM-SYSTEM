@@ -25,6 +25,9 @@
             gap: 30px;
             flex-wrap: wrap;
         }
+        .navbar{
+            background-color: #1230AE;
+        }
         .menu-item {
             width: 150px;
             padding: 20px;
@@ -62,7 +65,7 @@
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg ">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img src="{{ asset('LogoPolindra.png') }}" alt="Logo" width="50">

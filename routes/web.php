@@ -25,6 +25,18 @@ Route::get('/', function () {
 // Halaman Informasi PKM
 Route::view('/pkm-polindra', 'pkm-polindra');
 
+// Fallback jika URL tidak ditemukan
+Route::fallback(function () {
+    return view('login'); // Pastikan Anda memiliki file 404.blade.php di folder views
+});
+
+// Menampilkan form registrasi
+Route::get('/registrasi', [AuthController::class, 'showRegistrationForm'])->name('registrasi');
+
+// Menangani registrasi
+Route::post('/registrasi', [AuthController::class, 'registrasi']);
+
+
 /*
 |--------------------------------------------------------------------------
 | Route untuk PKMController
@@ -63,95 +75,52 @@ Route::post('/registrasi', [AuthController::class, 'register']);
 */
 
 Route::middleware(['auth'])->group(function () {
-    
+    Route::get('/dashboard/index', [UserController::class, 'index'])->name('admin.dashboard');
+    Route::get('/dashboard', function () {
+        // return view('dashboard');
+    })->name('dashboard');
+    // PKM MAHASISWA
+    Route::get('/upload-pkm', [PkmProcessController::class, 'create'])->name('upload-pkm');
+
+    Route::put('/upload-pkm', [PkmProcessController::class, 'create'])->name('pkm.submit');
+
+    Route::post('/upload-pkm', [PkmProcessController::class, 'store'])->name('pkm.submit');
+
+    Route::get('/dashboard', [PkmProcessController::class, 'index'])->name('pkm.dashboard');
+    Route::get('/pkm', function () {
+        return view('index');
+    })->name('pkm.show');
 });
-Route::get('/dashboard', function () {
-    // return view('dashboard');
-})->name('dashboard');
-Route::get('/dashboard/index', [UserController::class, 'index'])->name('admin.dashboard');
 
-/*
-|--------------------------------------------------------------------------
-| Default Route Fallback
-|--------------------------------------------------------------------------
-*/
-
-// Fallback jika URL tidak ditemukan
-Route::fallback(function () {
-    return view('login'); // Pastikan Anda memiliki file 404.blade.php di folder views
-});
-
-// Menampilkan form registrasi
-Route::get('/registrasi', [AuthController::class, 'showRegistrationForm'])->name('registrasi');
-
-// Menangani registrasi
-Route::post('/registrasi', [AuthController::class, 'registrasi']);
-
-
-// PKM MAHASISWA
-Route::get('/upload-pkm', [PkmProcessController::class,'create'])->name('upload-pkm');
-
-Route::put('/upload-pkm', [PkmProcessController::class,'create'])->name('pkm.submit');
-
-Route::post('/upload-pkm', [ PkmProcessController::class, 'store'])->name('pkm.submit');
-
-Route::get('/dashboard', [PkmProcessController::class,'index'])->name('pkm.dashboard');
-
-Route::get('/nilaiReviewer', function () {
-    return view('nilaiReviewer');
-})->name('nilaiReviewer');
-
-
-
-Route::get('/data-anggota', function () {
-    return view('data_anggota');
-})->name('data_anggota');
-
-
-Route::post('/data-anggota/submit', function () {
-    return back()->with('success', 'Data berhasil disimpan!');
-})->name('data_anggota.submit');
-
-
-
-// REVIEWER
-Route::get('/reviewer', [ReviewerController::class,'index'])->name('reviewer.dashboard');
-Route::post('/reviewer', [ReviewerController::class,'store'])->name('reviewer.store');
-Route::put('/reviewer', [ReviewerController::class,'update'])->name('reviewer.store');
-Route::get('/nilai-reviewer', [ReviewerController::class,'show'])->name('nilai-reviewer');
-Route::get('/dataAnggotadiAdmin', function () {
-    return view('dataAnggotadiAdmin');
+Route::middleware(['reviewer'])->group(function () {
+    Route::get('/nilaiReviewer', function () {
+        return view('nilaiReviewer');
+    })->name('nilaiReviewer');
+    // REVIEWER
+    Route::get('/reviewer', [ReviewerController::class, 'index'])->name('reviewer.dashboard');
+    Route::post('/reviewer', [ReviewerController::class, 'store'])->name('reviewer.store');
+    Route::put('/reviewer', [ReviewerController::class, 'update'])->name('reviewer.store');
+    Route::get('/nilai-reviewer', [ReviewerController::class, 'show'])->name('nilai-reviewer');
+    Route::get('/dataAnggotadiAdmin', function () {
+        return view('dataAnggotadiAdmin');
+    });
 });
 
 
 
-
-
-
-
-
-Route::resource('users', UserController::class);
-
-
-// Route::middleware(['role:admin'])->group(function () {
-// });
+Route::middleware(['admin'])->group(function () {
+    Route::resource('users', UserController::class);
+});
 
 Route::get('/logout', function () {
-    Auth::logout(); 
+    Auth::logout();
     return redirect('/login');
 })->name('logout');
 
 
 
-// // Route untuk halaman Pengajuan Usulan
-Route::get('/pkm', function () {
-    return view('index');
-})->name('pkm.show');
 
 
-// Route untuk logout (bisa diarahkan ke halaman login)
 Route::get('/logout', function () {
-    // Proses logout (contoh redirect ke halaman login)
     return redirect('/login');
 })->name('logout');
-
