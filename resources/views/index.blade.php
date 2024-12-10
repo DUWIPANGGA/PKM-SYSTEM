@@ -52,11 +52,11 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0 mt-5">
-                        <a href="" class="nav-item nav-link active">Home</a>
+                        {{-- <a href="" class="nav-item nav-link active">Home</a>
                         <a href="" class="nav-item nav-link">About</a>
                         <a href="" class="nav-item nav-link">Services</a>
                         <a href="" class="nav-item nav-link">Packages</a>
-                        <a href="" class="nav-item nav-link">Blog</a>
+                        <a href="" class="nav-item nav-link">Blog</a> --}}
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0">
@@ -68,36 +68,36 @@
                                 <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                             </div>
                         </div>
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
-                    </div>
-                    @if (Route::has('login'))
-                            <nav class="-mx-3 flex flex-1 justify-end">
-                                @auth
-                                    <a
-                                        href="{{ url('/dashboard') }}"
-                                        class="btn btn-primary rounded-pill py-2 px-4 ms-lg-4" 
-                                    >
-                                        Dashboard
-                                    </a>
-                                @else
-                                    <a
-                                        href="{{ route('login') }}" 
-                                        class="btn btn-primary rounded-pill py-2 px-4 ms-lg-4" 
-                                    >
-                                        Log in
-                                    </a>
-
-                                    @if (Route::has('register'))
+                        {{-- <a href="contact.html" class="nav-item nav-link">Contact</a> --}}
+                        @if (Route::has('login'))
+                                <div class="nav-item center ">
+                                    @auth
                                         <a
-                                            href="{{ route('register') }}"
-                                            class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                                            href="{{ url('/dashboard') }}"
+                                            class="btn btn-primary rounded-pill py-2 px-4 ms-lg-4" 
                                         >
-                                            Register
+                                            Dashboard
                                         </a>
-                                    @endif
-                                @endauth
-                            </nav>
-                        @endif
+                                    @else
+                                        <a
+                                            href="{{ route('login') }}" 
+                                            class="btn btn-primary rounded-pill py-2 px-4 ms-lg-4" 
+                                        >
+                                            Log in
+                                        </a>
+    
+                                        @if (Route::has('register'))
+                                            <a
+                                                href="{{ route('register') }}"
+                                                class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                                            >
+                                                Register
+                                            </a>
+                                        @endif
+                                    @endauth
+                                </div>
+                            @endif
+                    </div>
                 </div>
             </nav>
 
@@ -111,12 +111,12 @@
                     </ol>
                     <div class="carousel-inner" role="listbox">
                         <div class="carousel-item active">
-                            <img src="img/carousel-2.jpg" class="img-fluid" alt="Image">
+                            <img src="img/polindra-bg.png" class="img-fluid" alt="Image">
                             <div class="carousel-caption">
                                 <div class="p-3" style="max-width: 900px;">
-                                    <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Explore The World</h4>
-                                    <h1 class="display-2 text-capitalize text-white mb-4">Let's The World Together!</h1>
-                                    <p class="mb-5 fs-5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                                    <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;"> EXPLORE YOUR BRAIN TO BREAK THE LIMIT</h4>
+                                    <h1 class="display-2 text-capitalize text-white mb-4">PROGRAM KREATIVITAS MAHASISWA</h1>
+                                    <p class="mb-5 fs-5">"Program Kreativitas Mahasiswa (PKM) adalah wadah bagi generasi muda untuk menciptakan solusi nyata, mengembangkan potensi diri, dan memberikan kontribusi positif bagi masyarakat. Bergabunglah sekarang dan jadilah bagian dari perubahan!" 
                                     </p>
                                     <div class="d-flex align-items-center justify-content-center">
                                         <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="#">Discover Now</a>
@@ -125,12 +125,12 @@
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="img/carousel-1.jpg" class="img-fluid" alt="Image">
+                            <img src="img/polindra-bg2.png" class="img-fluid" alt="Image">
                             <div class="carousel-caption">
                                 <div class="p-3" style="max-width: 900px;">
-                                    <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Explore The World</h4>
-                                    <h1 class="display-2 text-capitalize text-white mb-4">Find Your Perfect Tour At Travel</h1>
-                                    <p class="mb-5 fs-5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                                    <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">PROGRAM KREATIVITAS MAHASISWA</h4>
+                                    <h1 class="display-2 text-capitalize text-white mb-4">Berani Bermimpi, Berani Berkarya: Jadilah Inovator Muda Bersama PKM!</h1>
+                                    <p class="mb-5 fs-5">Transformasikan ide-ide brilianmu menjadi solusi nyata bagi masyarakat. Program Kreativitas Mahasiswa (PKM) adalah langkah pertama menuju masa depan penuh inovasi dan prestasi!
                                     </p>
                                     <div class="d-flex align-items-center justify-content-center">
                                         <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="#">Discover Now</a>
@@ -139,12 +139,12 @@
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="img/carousel-3.jpg" class="img-fluid" alt="Image">
+                            <img src="img/polindra-bg3.png" class="img-fluid" alt="Image">
                             <div class="carousel-caption">
                                 <div class="p-3" style="max-width: 900px;">
-                                    <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Explore The World</h4>
-                                    <h1 class="display-2 text-capitalize text-white mb-4">You Like To Go?</h1>
-                                    <p class="mb-5 fs-5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                                    <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">PROGRAM KREATIVITAS MAHASISWA</h4>
+                                    <h1 class="display-2 text-capitalize text-white mb-4">Dari Ide Kecil Menjadi Karya Besar: PKM Adalah Awal Perjalananmu!</h1>
+                                    <p class="mb-5 fs-5">Apapun bidangmu, apapun passion-mu, Program Kreativitas Mahasiswa (PKM) adalah peluang emas untuk menciptakan perubahan yang berarti. 
                                     </p>
                                     <div class="d-flex align-items-center justify-content-center">
                                         <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="#">Discover Now</a>

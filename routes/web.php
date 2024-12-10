@@ -74,24 +74,6 @@ Route::post('/registrasi', [AuthController::class, 'register']);
 |--------------------------------------------------------------------------
 */
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard/index', [UserController::class, 'index'])->name('admin.dashboard');
-    Route::get('/dashboard', function () {
-        // return view('dashboard');
-    })->name('dashboard');
-    // PKM MAHASISWA
-    Route::get('/upload-pkm', [PkmProcessController::class, 'create'])->name('upload-pkm');
-
-    Route::put('/upload-pkm', [PkmProcessController::class, 'create'])->name('pkm.submit');
-
-    Route::post('/upload-pkm', [PkmProcessController::class, 'store'])->name('pkm.submit');
-
-    Route::get('/dashboard', [PkmProcessController::class, 'index'])->name('pkm.dashboard');
-    Route::get('/pkm', function () {
-        return view('index');
-    })->name('pkm.show');
-});
-
 Route::middleware(['reviewer'])->group(function () {
     Route::get('/nilaiReviewer', function () {
         return view('nilaiReviewer');
@@ -105,6 +87,24 @@ Route::middleware(['reviewer'])->group(function () {
         return view('dataAnggotadiAdmin');
     });
 });
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard/index', [UserController::class, 'index'])->name('admin.dashboard');
+    Route::get('/dashboard', function () {
+        // return view('dashboard');
+    })->name('dashboard');
+    // PKM MAHASISWA
+    Route::get('/upload-pkm', [PkmProcessController::class, 'create'])->name('upload-pkm');
+
+    Route::put('/upload-pkm', [PkmProcessController::class, 'create'])->name('pkm.submit');
+
+    Route::post('/upload-pkm', [PkmProcessController::class, 'store'])->name('pkm.submit');
+
+    Route::get('/dashboard', [PkmProcessController::class, 'index'])->name('pkm.dashboard');
+});
+Route::get('/', function () {
+    return view('index');
+})->name('pkm.show');
+
 
 
 

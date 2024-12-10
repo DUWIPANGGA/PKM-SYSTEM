@@ -509,17 +509,22 @@ class ComposerStaticInit8c804e4a8c3c1ea0e6dd61980c279cdd
     );
 
     public static $classMap = array (
-        'App\\Http\\Controllers\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminController.php',
         'App\\Http\\Controllers\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/AuthController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/DashboardController.php',
         'App\\Http\\Controllers\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/LoginController.php',
         'App\\Http\\Controllers\\PkmController' => __DIR__ . '/../..' . '/app/Http/Controllers/PkmController.php',
+        'App\\Http\\Controllers\\PkmProcessController' => __DIR__ . '/../..' . '/app/Http/Controllers/PkmProcessController.php',
         'App\\Http\\Controllers\\ReviewerController' => __DIR__ . '/../..' . '/app/Http/Controllers/ReviewerController.php',
+        'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Middleware\\AdminAuth' => __DIR__ . '/../..' . '/app/Http/Middleware/AdminAuth.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',
         'App\\Http\\Middleware\\RoleMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/RoleMiddleware.php',
+        'App\\Http\\Middleware\\admin' => __DIR__ . '/../..' . '/app/Http/Middleware/admin.php',
+        'App\\Http\\Middleware\\reviewer' => __DIR__ . '/../..' . '/app/Http/Middleware/reviewer.php',
+        'App\\Models\\PKMModel' => __DIR__ . '/../..' . '/app/Models/PKMModel.php',
+        'App\\Models\\Reviewer' => __DIR__ . '/../..' . '/app/Models/Reviewer.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',

@@ -48,7 +48,8 @@ class Kernel extends HttpKernel
     protected $routeMiddleware = [
         // Middleware bawaan Laravel
         'auth' => \App\Http\Middleware\Authenticate::class,
-'reviewer' => \App\Http\Middleware\Reviewer::class,       'admin' => \App\Http\Middleware\admin::class,
+        'reviewer' => \App\Http\Middleware\reviewer::class,
+        'admin' => \App\Http\Middleware\admin::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,

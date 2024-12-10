@@ -27,8 +27,7 @@
         }
     </style>
 </head>
-<body>
-
+<body style="background-image: url(/img/polindra-bg.png); background-repeat: no-repeat; background-size: cover;">
 <div class="container mt-5">
     <div class="registrasi-container">
         <a class="logo d-flex justify-content-center" href="logo-polindra">

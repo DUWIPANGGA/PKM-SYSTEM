@@ -74,6 +74,7 @@
 @endpush
 
 @section('content')
+<div class="container-fluid content-container h-100" style="height: 100vh; min-height: 100vh; display: flex; flex-direction: column; justify-content: center;">
 <div class="header">
     <h2>Alur Sistem Informasi PKM Mahasiswa Polindra</h2>
 </div>
@@ -140,5 +141,6 @@
         <li>PKM Gagasan Futuristik Tertulis (PKM-GFT)</li>
         <li>PKM Prototipe Inovatif (PKM-PI)</li>
     </ul>
+</div>
 </div>
 @endsection
