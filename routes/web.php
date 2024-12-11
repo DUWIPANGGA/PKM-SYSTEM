@@ -82,12 +82,12 @@ Route::middleware(['reviewer'])->group(function () {
     Route::get('/reviewer', [ReviewerController::class, 'index'])->name('reviewer.dashboard');
     Route::post('/reviewer', [ReviewerController::class, 'store'])->name('reviewer.store');
     Route::put('/reviewer', [ReviewerController::class, 'update'])->name('reviewer.store');
-    Route::get('/nilai-reviewer', [ReviewerController::class, 'show'])->name('nilai-reviewer');
     Route::get('/dataAnggotadiAdmin', function () {
         return view('dataAnggotadiAdmin');
     });
 });
 Route::middleware(['auth'])->group(function () {
+    Route::get('/nilai-reviewer', [ReviewerController::class, 'show'])->name('nilai-reviewer');
     Route::get('/dashboard/index', [UserController::class, 'index'])->name('admin.dashboard');
     Route::get('/dashboard', function () {
         // return view('dashboard');

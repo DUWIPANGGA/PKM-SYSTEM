@@ -100,6 +100,7 @@ class ReviewerController extends Controller
         $proposal = PKMModel::where('id_user', Auth::user()->id)->first();
         if ($proposal) {
             $hasil_review = Reviewer::where('id_pkm', $proposal->id)->first();
+            dd($proposal);
             $nilai_huruf->nilai1 = $this->mapToLetter($hasil_review->nilai1);
             $nilai_huruf->nilai2 = $this->mapToLetter($hasil_review->nilai2);
             $nilai_huruf->nilai3 = $this->mapToLetter($hasil_review->nilai3);
