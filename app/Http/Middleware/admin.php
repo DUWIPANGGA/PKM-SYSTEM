@@ -19,7 +19,7 @@ class admin
         if (!Auth::check()) {
             return redirect()->route('login');
         }
-        elseif (Auth::check() && Auth::user()->role != 'reviewer') {
+        elseif (Auth::check() && Auth::user()->role != 'admin') {
             return redirect()->route('dashboard');
         }
         return $next($request);

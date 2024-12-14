@@ -66,7 +66,7 @@ Route::post('/login', [LoginController::class, 'login']);
 // Form Registrasi
 Route::get('/registrasi', [AuthController::class, 'showRegistrationForm'])->name('registrasi');
 // Proses Registrasi
-Route::post('/registrasi', [AuthController::class, 'register']);
+Route::post('/registrasi', [AuthController::class, 'store']);
 
 /*
 |--------------------------------------------------------------------------
@@ -79,7 +79,7 @@ Route::middleware(['reviewer'])->group(function () {
         return view('nilaiReviewer');
     })->name('nilaiReviewer');
     // REVIEWER
-    Route::get('/reviewer', [ReviewerController::class, 'index'])->name('reviewer.dashboard');
+    Route::get('/reviewer', [ReviewerController::class, 'reviewer'])->name('reviewer.dashboard');
     Route::post('/reviewer', [ReviewerController::class, 'store'])->name('reviewer.store');
     Route::put('/reviewer', [ReviewerController::class, 'update'])->name('reviewer.store');
     Route::get('/dataAnggotadiAdmin', function () {
@@ -95,9 +95,11 @@ Route::middleware(['auth'])->group(function () {
     // PKM MAHASISWA
     Route::get('/upload-pkm', [PkmProcessController::class, 'create'])->name('upload-pkm');
 
-    Route::put('/upload-pkm', [PkmProcessController::class, 'create'])->name('pkm.submit');
-
     Route::post('/upload-pkm', [PkmProcessController::class, 'store'])->name('pkm.submit');
+    Route::put('/upload-pkm/{id}', [PkmProcessController::class, 'update'])->name('pkm.update');
+
+
+    Route::get('/information', [PkmProcessController::class, 'dashboard'])->name('pkm.information');
 
     Route::get('/dashboard', [PkmProcessController::class, 'index'])->name('pkm.dashboard');
 });

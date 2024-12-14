@@ -65,60 +65,50 @@
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg ">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="{{ asset('LogoPolindra.png') }}" alt="Logo" width="50">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/Beranda') }}" class="menu-item">
-                            <p>Beranda</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/Tentang') }}" class="menu-item">
-                            <p>Tentang</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/Kontak') }}" class="menu-item">
-                            <p>Kontak</p>
-                        </a>
-                    </li>
-                    @if (Route::has('login'))
-                            <nav class="-mx-3 flex flex-1 justify-end">
-                                @auth
-                                    <a
-                                        href="{{ url('/dashboard') }}"
-                                        class="btn btn-primary rounded-pill py-2 px-4 ms-lg-4" 
-                                    >
-                                        Dashboard
-                                    </a>
-                                @else
-                                    <a
-                                        href="{{ route('login') }}" 
-                                        class="btn btn-primary rounded-pill py-2 px-4 ms-lg-4" 
-                                    >
-                                        Log in
-                                    </a>
+    <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+        <a href="" class="navbar-brand p-0">
+            <h1 class="m-0"><img src="/img/polindra.png " alt=""></i>PKM</h1>
+            <!-- <img src="img/logo.png" alt="Logo"> -->
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="fa fa-bars"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto py-0 mt-5">
+                {{-- <a href="" class="nav-item nav-link active">Home</a>
+                    <a href="" class="nav-item nav-link">About</a>
+                    <a href="" class="nav-item nav-link">Services</a>
+                    <a href="" class="nav-item nav-link">Packages</a>
+                    <a href="" class="nav-item nav-link">Blog</a> --}}
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                    <div class="dropdown-menu m-0">
+                        <a href="{{ route('PanduanPkm') }}" class="dropdown-item">PanduanPkm</a>
+                        <a href="{{ route('AlurSistemPkm') }}" class="dropdown-item">Alur sistem</a>
+                        <a href="{{ route('Kontak') }}" class="dropdown-item">contact</a>
+                        <a href="{{ route('Tentang') }}" class="dropdown-item">about</a>
+                    </div>
+                </div>
+                @if (Route::has('login'))
+                    <div class="nav-item center ">
+                        @auth
+                            <a href="{{ url('/dashboard') }}" class="btn btn-primary rounded-pill py-2 px-4 ms-lg-4">
+                                Dashboard
+                            </a>
+                        @else
+                            <a href="{{ route('login') }}" class="btn btn-primary rounded-pill py-2 px-4 ms-lg-4">
+                                Log in
+                            </a>
 
-                                    @if (Route::has('register'))
-                                        <a
-                                            href="{{ route('register') }}"
-                                            class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
-                                        >
-                                            Register
-                                        </a>
-                                    @endif
-                                @endauth
-                            </nav>
-                        @endif
-                </ul>
+                            @if (Route::has('register'))
+                                <a href="{{ route('register') }}"
+                                    class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+                                    Register
+                                </a>
+                            @endif
+                        @endauth
+                    </div>
+                @endif
             </div>
         </div>
     </nav>

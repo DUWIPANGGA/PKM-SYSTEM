@@ -23,12 +23,25 @@ class ReviewerController extends Controller
             ->get();
         $hasil_review = [];
         foreach ($proposal_user as $proposal) {
-            $result = Reviewer::where("id_pkm", $proposal->id_pkm)->first();
+            $result = Reviewer::where("id_pkm", $proposal->id)->first();
             if ($result) {
                 $hasil_review[$proposal->id_pkm] = $result;
             }
         }
         return view('pkm-reviewer.reviewer', compact(['proposal_user', 'hasil_review', 'hasil_review']));
+    }
+    public function reviewer()
+    {
+        $proposal_user = PKMModel::all();
+        $hasil_review = [];
+        
+        foreach ($proposal_user as $proposal) {
+            $result = Reviewer::where("id_pkm", $proposal->id)->first();
+            if ($result) {
+                $hasil_review[$proposal->id] = $result;
+            }
+        }
+        return view('pkm-reviewer.reviewer', compact(['proposal_user', 'hasil_review']));
     }
     /**
      * Show the form for creating a new resource.
@@ -60,11 +73,19 @@ class ReviewerController extends Controller
             'nilai5' => $request->nilai5,
             'komentar' => $request->comment,
             'skor' => $skor,
+            
         ]);
-        $pkm = PKMModel::find($request->id); // Ambil instance PKMModel berdasarkan ID
+        $pkm = PKMModel::find($request->id);
 
         if ($pkm) {
-            $pkm->status = 'sudah direview';
+            $status_temp = 'menunggu';
+            if($request->status == 'menunggu'){
+                $status_temp = 'sudah direview';
+            }else{
+                $status_temp = $request->status;
+            }
+            dd($request->status);
+            $pkm->status = $status_temp;
             $pkm->save();
         }
         if ($result) {
@@ -100,15 +121,17 @@ class ReviewerController extends Controller
         $proposal = PKMModel::where('id_user', Auth::user()->id)->first();
         if ($proposal) {
             $hasil_review = Reviewer::where('id_pkm', $proposal->id)->first();
-            dd($proposal);
-            $nilai_huruf->nilai1 = $this->mapToLetter($hasil_review->nilai1);
-            $nilai_huruf->nilai2 = $this->mapToLetter($hasil_review->nilai2);
-            $nilai_huruf->nilai3 = $this->mapToLetter($hasil_review->nilai3);
-            $nilai_huruf->nilai4 = $this->mapToLetter($hasil_review->nilai4);
-            $nilai_huruf->nilai5 = $this->mapToLetter($hasil_review->nilai5);
+            // dd($proposal);
+            if ($hasil_review) {
+                $nilai_huruf->nilai1 = $this->mapToLetter($hasil_review->nilai1);
+                $nilai_huruf->nilai2 = $this->mapToLetter($hasil_review->nilai2);
+                $nilai_huruf->nilai3 = $this->mapToLetter($hasil_review->nilai3);
+                $nilai_huruf->nilai4 = $this->mapToLetter($hasil_review->nilai4);
+                $nilai_huruf->nilai5 = $this->mapToLetter($hasil_review->nilai5);
+            }
             return view('pkm-mahasiswa.nilaiReviewer', compact(['hasil_review', 'proposal', 'nilai_huruf']));
         } else {
-            $hasil_review = new stdClass(); 
+            $hasil_review = new stdClass();
             return view('pkm-mahasiswa.nilaiReviewer', compact(['hasil_review', 'proposal', 'nilai_huruf']));
         }
     }
@@ -133,6 +156,18 @@ class ReviewerController extends Controller
             'komentar' => $request->comment,
             'skor' => $skor,
         ]);
+        $pkm = PKMModel::find($request->id);
+
+        if ($pkm) {
+            $status_temp = 'menunggu';
+            if($request->status == 'menunggu'){
+                $status_temp = 'sudah direview';
+            }else{
+                $status_temp = $request->status;
+            }
+            $pkm->status = $status_temp;
+            $pkm->save();
+        }
         return redirect()->back();
     }
 

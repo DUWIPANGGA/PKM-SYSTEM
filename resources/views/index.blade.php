@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="utf-8">
-        <title>PKM</title>
+        <title>INNOVANA</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
@@ -12,6 +12,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600&family=Roboto&display=swap" rel="stylesheet"> 
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('logopolindra.png ') }}">
 
         <!-- Icon Font Stylesheet -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
@@ -44,7 +45,7 @@
         <div class="container-fluid position-relative p-0">
             <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
                 <a href="" class="navbar-brand p-0">
-                    <h1 class="m-0"><img src="/img/polindra.png " alt=""></i>PKM</h1>
+                    <h1 class="m-0"><img src="logopolindra.png " alt=""></i>INNOVANA</h1>
                     <!-- <img src="img/logo.png" alt="Logo"> -->
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -53,50 +54,40 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0 mt-5">
                         {{-- <a href="" class="nav-item nav-link active">Home</a>
-                        <a href="" class="nav-item nav-link">About</a>
-                        <a href="" class="nav-item nav-link">Services</a>
-                        <a href="" class="nav-item nav-link">Packages</a>
-                        <a href="" class="nav-item nav-link">Blog</a> --}}
+                            <a href="" class="nav-item nav-link">About</a>
+                            <a href="" class="nav-item nav-link">Services</a>
+                            <a href="" class="nav-item nav-link">Packages</a>
+                            <a href="" class="nav-item nav-link">Blog</a> --}}
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0">
                                 <a href="{{ route('PanduanPkm') }}" class="dropdown-item">PanduanPkm</a>
-                                <a href="tour.html" class="dropdown-item">Explore Tour</a>
-                                <a href="booking.html" class="dropdown-item">Travel Booking</a>
-                                <a href="gallery.html" class="dropdown-item">Our Gallery</a>
-                                <a href="guides.html" class="dropdown-item">Travel Guides</a>
-                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                                <a href="{{ route('AlurSistemPkm') }}" class="dropdown-item">Alur sistem</a>
+                                <a href="{{ route('Kontak') }}" class="dropdown-item">contact</a>
+                                <a href="{{ route('Tentang') }}" class="dropdown-item">about</a>
                             </div>
                         </div>
                         {{-- <a href="contact.html" class="nav-item nav-link">Contact</a> --}}
                         @if (Route::has('login'))
-                                <div class="nav-item center ">
-                                    @auth
-                                        <a
-                                            href="{{ url('/dashboard') }}"
-                                            class="btn btn-primary rounded-pill py-2 px-4 ms-lg-4" 
-                                        >
-                                            Dashboard
+                            <div class="nav-item center ">
+                                @auth
+                                    <a href="{{ url('/dashboard') }}" class="btn btn-primary rounded-pill py-2 px-4 ms-lg-4">
+                                        Dashboard
+                                    </a>
+                                @else
+                                    <a href="{{ route('login') }}" class="btn btn-primary rounded-pill py-2 px-4 ms-lg-4">
+                                        Log in
+                                    </a>
+        
+                                    @if (Route::has('register'))
+                                        <a href="{{ route('register') }}"
+                                            class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+                                            Register
                                         </a>
-                                    @else
-                                        <a
-                                            href="{{ route('login') }}" 
-                                            class="btn btn-primary rounded-pill py-2 px-4 ms-lg-4" 
-                                        >
-                                            Log in
-                                        </a>
-    
-                                        @if (Route::has('register'))
-                                            <a
-                                                href="{{ route('register') }}"
-                                                class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
-                                            >
-                                                Register
-                                            </a>
-                                        @endif
-                                    @endauth
-                                </div>
-                            @endif
+                                    @endif
+                                @endauth
+                            </div>
+                        @endif
                     </div>
                 </div>
             </nav>
@@ -173,8 +164,8 @@
         <div class="container-fluid bg-light service py-5">
             <div class="container py-5">
                 <div class="mx-auto text-center mb-5" style="max-width: 900px;">
-                    <h5 class="section-title px-3">Searvices</h5>
-                    <h1 class="mb-0">Our Services</h1>
+                    <h5 class="section-title px-3">PKM</h5>
+                    <h1 class="mb-0">Macam Macam Program Kreatifitas Mahasiswa</h1>
                 </div>
                 <div class="row g-4">
                     <div class="col-lg-6">
@@ -182,48 +173,58 @@
                             <div class="col-12">
                                 <div class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4 pe-0">
                                     <div class="service-content text-end">
-                                        <h5 class="mb-4">WorldWide Tours</h5>
-                                        <p class="mb-0">Dolor sit amet consectetur adipisicing elit. Non alias eum, suscipit expedita corrupti officiis debitis possimus nam laudantium beatae quidem dolore consequuntur voluptate rem reiciendis, omnis sequi harum earum.
+                                        <h5 class="mb-4">PKM Riset (PKM-R)</h5>
+                                        <p class="mb-0">Program ini bertujuan untuk mengembangkan budaya meneliti di kalangan mahasiswa. <br>
+                                            Fokus: Riset dasar atau terapan.<br>
+                                            Contoh: Eksperimen laboratorium, penelitian sosial, atau pengembangan teknologi baru.<br>
                                         </p>
                                     </div>
                                     <div class="service-icon p-4">
-                                        <i class="fa fa-globe fa-4x text-primary"></i>
+                                        <i class="fa fa-flask fa-4x text-primary"></i>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="service-content-inner d-flex align-items-center  bg-white border border-primary rounded p-4 pe-0">
                                     <div class="service-content text-end">
-                                        <h5 class="mb-4">Hotel Reservation</h5>
-                                        <p class="mb-0">Dolor sit amet consectetur adipisicing elit. Non alias eum, suscipit expedita corrupti officiis debitis possimus nam laudantium beatae quidem dolore consequuntur voluptate rem reiciendis, omnis sequi harum earum.
+                                        <h5 class="mb-4">PKM Kewirausahaan (PKM-K)</h5>
+                                        <p class="mb-0">
+                                            Ditujukan untuk mahasiswa yang memiliki jiwa bisnis dan ingin mengembangkan usaha kreatif. <br>
+
+Fokus: Membentuk bisnis mandiri berbasis inovasi.<br>
+Contoh: Produk fashion, makanan inovatif, atau aplikasi digital.<br>
+
                                         </p>
                                     </div>
                                     <div class="service-icon p-4">
-                                        <i class="fa fa-hotel fa-4x text-primary"></i>
+                                        <i class="fa fa-store fa-4x text-primary"></i>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4 pe-0">
                                     <div class="service-content text-end">
-                                        <h5 class="mb-4">Travel Guides</h5>
-                                        <p class="mb-0">Dolor sit amet consectetur adipisicing elit. Non alias eum, suscipit expedita corrupti officiis debitis possimus nam laudantium beatae quidem dolore consequuntur voluptate rem reiciendis, omnis sequi harum earum.
-                                        </p>
+                                        <h5 class="mb-4">PKM Pengabdian kepada Masyarakat (PKM-PM)</h5>
+                                        <p class="mb-0">Mahasiswa diajak untuk memberikan solusi kepada masyarakat melalui program pengabdian.<br>
+
+                                            Fokus: Memberdayakan masyarakat atau kelompok tertentu.<br>
+                                            Contoh: Pelatihan teknologi untuk petani, program literasi digital untuk UMKM.</p>
                                     </div>
                                     <div class="service-icon p-4">
-                                        <i class="fa fa-user fa-4x text-primary"></i>
+                                        <i class="fa fa-handshake-angle fa-4x text-primary"></i>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4 pe-0">
                                     <div class="service-content text-end">
-                                        <h5 class="mb-4">Event Management</h5>
-                                        <p class="mb-0">Dolor sit amet consectetur adipisicing elit. Non alias eum, suscipit expedita corrupti officiis debitis possimus nam laudantium beatae quidem dolore consequuntur voluptate rem reiciendis, omnis sequi harum earum.
-                                        </p>
+                                        <h5 class="mb-4">PKM Penerapan Iptek (PKM-PI)</h5>
+                                        <p class="mb-0">Mahasiswa menerapkan ilmu pengetahuan dan teknologi untuk menyelesaikan masalah nyata.<br>
+                                            Fokus: Implementasi hasil riset ke dunia nyata.<br>
+                                            Contoh: Alat bantu petani, sistem manajemen limbah.</p>
                                     </div>
                                     <div class="service-icon p-4">
-                                        <i class="fa fa-cog fa-4x text-primary"></i>
+                                        <i class="fa fa-cogs fa-4x text-primary"></i>
                                     </div>
                                 </div>
                             </div>
@@ -234,48 +235,59 @@
                             <div class="col-12">
                                 <div class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4 ps-0">
                                     <div class="service-icon p-4">
-                                        <i class="fa fa-globe fa-4x text-primary"></i>
+                                        <i class="fa fa-lightbulb fa-4x text-primary"></i>
                                     </div>
                                     <div class="service-content">
-                                        <h5 class="mb-4">WorldWide Tours</h5>
-                                        <p class="mb-0">Dolor sit amet consectetur adipisicing elit. Non alias eum, suscipit expedita corrupti officiis debitis possimus nam laudantium beatae quidem dolore consequuntur voluptate rem reiciendis, omnis sequi harum earum.
-                                        </p>
+                                        <h5 class="mb-4">PKM Gagasan Futuristik Konstruktif (PKM-GFK)</h5>
+                                        <p class="mb-0">Mahasiswa diminta untuk merumuskan gagasan kreatif untuk menyelesaikan masalah di masa depan.<br>
+
+                                            Fokus: Gagasan inovatif dan aplikatif untuk masa depan.<br>
+                                            Contoh: Konsep kota pintar, energi terbarukan, transportasi berkelanjutan.
+                                            </p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4 ps-0">
                                     <div class="service-icon p-4">
-                                        <i class="fa fa-hotel fa-4x text-primary"></i>
+                                        <i class="fa fa-tools fa-4x text-primary"></i>
                                     </div>
                                     <div class="service-content">
-                                        <h5 class="mb-4">Hotel Reservation</h5>
-                                        <p class="mb-0">Dolor sit amet consectetur adipisicing elit. Non alias eum, suscipit expedita corrupti officiis debitis possimus nam laudantium beatae quidem dolore consequuntur voluptate rem reiciendis, omnis sequi harum earum.
-                                        </p>
+                                        <h5 class="mb-4">PKM Karya Inovatif (PKM-KI)</h5>
+                                        <p class="mb-0">Program ini berfokus pada penciptaan karya yang kreatif dan inovatif.<br>
+
+                                            Fokus: Produk atau layanan baru yang memberi manfaat besar.<br>
+                                            Contoh: Desain alat kesehatan inovatif, aplikasi untuk pendidikan inklusif.
+                                            </p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4 ps-0">
                                     <div class="service-icon p-4">
-                                        <i class="fa fa-user fa-4x text-primary"></i>
+                                        <i class="fa fa-file-alt fa-4x text-primary"></i>
                                     </div>
                                     <div class="service-content">
-                                        <h5 class="mb-4">Travel Guides</h5>
-                                        <p class="mb-0">Dolor sit amet consectetur adipisicing elit. Non alias eum, suscipit expedita corrupti officiis debitis possimus nam laudantium beatae quidem dolore consequuntur voluptate rem reiciendis, omnis sequi harum earum.
-                                        </p>
+                                        <h5 class="mb-4">PKM Artikel Ilmiah (PKM-AI)</h5>
+                                        <p class="mb-0">Mahasiswa mengembangkan keterampilan menulis ilmiah melalui publikasi karya tulis.<br>
+
+                                            Fokus: Penulisan artikel berbasis penelitian atau gagasan.<br>
+                                            Contoh: Artikel yang diterbitkan dalam jurnal ilmiah.
+                                            </p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4 ps-0">
                                     <div class="service-icon p-4">
-                                        <i class="fa fa-cog fa-4x text-primary"></i>
+                                        <i class="fa fa-video fa-4x text-primary"></i>
                                     </div>
                                     <div class="service-content">
-                                        <h5 class="mb-4">Event Management</h5>
-                                        <p class="mb-0">Dolor sit amet consectetur adipisicing elit. Non alias eum, suscipit expedita corrupti officiis debitis possimus nam laudantium beatae quidem dolore consequuntur voluptate rem reiciendis, omnis sequi harum earum.
-                                        </p>
+                                        <h5 class="mb-4">PKM Video Gagasan Konstruktif (PKM-VGK)</h5>
+                                        <p class="mb-0">Mahasiswa menyampaikan gagasan atau solusi konstruktif dalam format video.<br>
+
+                                            Fokus: Gagasan kreatif melalui visual yang menarik.<br>
+                                            Contoh: Video kampanye perubahan perilaku, animasi edukasi.</p>
                                     </div>
                                 </div>
                             </div>
@@ -296,14 +308,10 @@
         <div class="container-fluid subscribe py-5">
             <div class="container text-center py-5">
                 <div class="mx-auto text-center" style="max-width: 900px;">
-                    <h5 class="subscribe-title px-3">Subscribe</h5>
-                    <h1 class="text-white mb-4">Our Newsletter</h1>
-                    <p class="text-white mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum tempore nam, architecto doloremque velit explicabo? Voluptate sunt eveniet fuga eligendi! Expedita laudantium fugiat corrupti eum cum repellat a laborum quasi.
+                    <h5 class="subscribe-title px-3">Join US</h5>
+                    <h1 class="text-white mb-4">Kesempatan Emas</h1>
+                    <p class="text-white mb-5">Jangan lewatkan kesempatan untuk berkontribusi melalui PKM! Kembangkan potensi dan raih prestasi di tingkat nasional!
                     </p>
-                    <div class="position-relative mx-auto">
-                        <input class="form-control border-primary rounded-pill w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
-                        <button type="button" class="btn btn-primary rounded-pill position-absolute top-0 end-0 py-2 px-4 mt-2 me-2">Subscribe</button>
-                    </div>
                 </div>
             </div>
         </div>
@@ -331,65 +339,22 @@
                     </div>
                     <div class="col-md-6 col-lg-6 col-xl-3">
                         <div class="footer-item d-flex flex-column">
-                            <h4 class="mb-4 text-white">Company</h4>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> About</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Careers</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Blog</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Press</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Gift Cards</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Magazine</a>
+                            <h4 class="mb-4 text-white">App</h4>
+                            <a href="{{ route('Tentang') }}"><i class="fas fa-angle-right me-2"></i> Tentang</a>
+                            <a href="{{ url('/AlurSistemPkm') }}"><i class="fas fa-angle-right me-2"></i> PKM</a>
+                            <a href="{{ url('/PedomanPkm') }}"><i class="fas fa-angle-right me-2"></i> Pedoman</a>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-6 col-xl-3">
                         <div class="footer-item d-flex flex-column">
                             <h4 class="mb-4 text-white">Support</h4>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Contact</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Legal Notice</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Privacy Policy</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Terms and Conditions</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Sitemap</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Cookie policy</a>
+                            <a href="{{ route('Kontak') }}"><i class="fas fa-angle-right me-2"></i> Contact</a>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-6 col-xl-3">
                         <div class="footer-item">
-                            <div class="row gy-3 gx-2 mb-4">
-                                <div class="col-xl-6">
-                                    <form>
-                                        <div class="form-floating">
-                                            <select class="form-select bg-dark border" id="select1">
-                                                <option value="1">Arabic</option>
-                                                <option value="2">German</option>
-                                                <option value="3">Greek</option>
-                                                <option value="3">New York</option>
-                                            </select>
-                                            <label for="select1">English</label>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="col-xl-6">
-                                    <form>
-                                        <div class="form-floating">
-                                            <select class="form-select bg-dark border" id="select1">
-                                                <option value="1">USD</option>
-                                                <option value="2">EUR</option>
-                                                <option value="3">INR</option>
-                                                <option value="3">GBP</option>
-                                            </select>
-                                            <label for="select1">$</label>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <h4 class="text-white mb-3">Payments</h4>
-                            <div class="footer-bank-card">
-                                <a href="#" class="text-white me-2"><i class="fab fa-cc-amex fa-2x"></i></a>
-                                <a href="#" class="text-white me-2"><i class="fab fa-cc-visa fa-2x"></i></a>
-                                <a href="#" class="text-white me-2"><i class="fas fa-credit-card fa-2x"></i></a>
-                                <a href="#" class="text-white me-2"><i class="fab fa-cc-mastercard fa-2x"></i></a>
-                                <a href="#" class="text-white me-2"><i class="fab fa-cc-paypal fa-2x"></i></a>
-                                <a href="#" class="text-white"><i class="fab fa-cc-discover fa-2x"></i></a>
-                            </div>
+                            
+                            
                         </div>
                     </div>
                 </div>
@@ -402,14 +367,10 @@
             <div class="container">
                 <div class="row g-4 align-items-center">
                     <div class="col-md-6 text-center text-md-end mb-md-0">
-                        <i class="fas fa-copyright me-2"></i><a class="text-white" href="#">Your Site Name</a>, All right reserved.
+                        <i class="fas fa-copyright me-2"></i><a class="text-white" href="#">INNOVANA</a>,
                     </div>
                     <div class="col-md-6 text-center text-md-start">
-                        <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
-                        <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
-                        <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-                        Designed By <a class="text-white" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a href="https://themewagon.com">ThemeWagon</a>
-                    </div>
+                        Designed by <a class="text-white">Fazah</a></div>
                     </div>
                 </div>
             </div>

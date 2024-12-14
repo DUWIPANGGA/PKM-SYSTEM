@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-
+use Egulias\EmailValidator\EmailValidator;
+use Egulias\EmailValidator\Validation\RFCValidation;
 class AuthController extends Controller
 {
     public function store(Request $request)
     {
+        // dd('cok');
         $validated = $request->validate([
             'nim' => 'required|unique:users,nim|max:20',
             'name' => 'required|string|max:255',
@@ -17,8 +19,8 @@ class AuthController extends Controller
             'alamat' => 'required|string|max:255',
             'angkatan' => 'required|string|max:4',
             'phone' => 'required|string|max:15',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:8|confirmed',
+            'email' => 'required|unique:users,email',
+            'password' => 'required|min:8|confirmed:confirm_password',
         ]);
 
         $user = User::create([
@@ -29,11 +31,12 @@ class AuthController extends Controller
             'angkatan' => $validated['angkatan'],
             'phone' => $validated['phone'],
             'email' => $validated['email'],
+            'role' => 'mahasiswa',
             'password' => Hash::make($validated['password']),
         ]);
+        
+        return redirect()->route('login')->with('success', 'User berhasil dibuat!');
 
-        // Redirect atau kembalikan pesan sukses
-        return redirect('/login')->with('success', 'Akun berhasil didaftarkan!');
     }
 
     public function showRegistrationForm()

@@ -12,7 +12,6 @@ class Reviewer extends Model
     protected $table = 'reviewer';
 
     protected $fillable = [
-        'id',
         'id_user',
         'id_pkm',
         'komentar',
